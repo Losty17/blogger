@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Post from "../types/Post";
+import Post from "../types/post/Post";
 import { TheCard } from "flowbite-vue";
 import { useRouter } from "vue-router";
 import { useNavigate } from "../utils";
