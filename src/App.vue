@@ -12,7 +12,7 @@ const viewName = ref("default");
         <component
           :is="Component"
           :key="route.name === 'repeat' ? route.path : route.meta.key"
-          class="mt-12"
+          class="pt-24"
         />
       </template>
       <template #fallback> Loading... </template>

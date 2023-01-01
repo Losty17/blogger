@@ -1,5 +1,5 @@
 <template>
-  <Navbar class="bg-[#242424]">
+  <Navbar class="bg-[#242424]" id="navbar">
     <!-- LEFT SIDE -->
     <template #logo="{ isShowMenu }">
       <div class="flex justify-start gap-4">

@@ -12,7 +12,7 @@ export const router = createRouter({
       component: () => import("./pages/Blog.vue"),
     },
     { path: "/posts/new", component: () => import("./pages/NewPost.vue") },
-    // { path: "/posts/:id", component: () => "" },
+    { path: "/posts/:id", component: () => import("./pages/Post.vue") },
     // { path: "/user/:id", component: () => "" },
     // { path: "/contact", component: () => "" },
     {
