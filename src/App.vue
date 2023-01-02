@@ -1,18 +1,19 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import Navbar from "./components/Navbar.vue";
+import Navbar from "./components/containers/Navbar.vue";
 const viewName = ref("default");
 </script>
 
 <template>
   <RouterView :name="viewName" v-slot="{ Component, route }">
-    <Navbar class="navbar" />
+    <!-- <Navbar class="navbar" /> -->
+    <div class="navbar"></div>
     <Suspense timeout="0">
       <template #default>
         <component
           :is="Component"
           :key="route.name === 'repeat' ? route.path : route.meta.key"
-          class="pt-24"
+          class="component"
         />
       </template>
       <template #fallback> Loading... </template>
@@ -21,7 +22,7 @@ const viewName = ref("default");
   </RouterView>
 </template>
 
-<style scoped>
+<style>
 .navbar {
   position: fixed;
   top: 0;
@@ -29,5 +30,9 @@ const viewName = ref("default");
   width: 100%;
   z-index: 100;
   background: #242424;
+  height: 64px;
+}
+.component {
+  margin-top: 80px;
 }
 </style>

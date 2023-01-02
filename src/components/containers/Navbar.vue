@@ -61,7 +61,7 @@ import {
   NavbarCollapse,
 } from "flowbite-vue";
 import { ref, onMounted } from "vue";
-import { useNavigate } from "../utils";
+import { useNavigate } from "../../utils";
 import { useRouter } from "vue-router";
 const router = useRouter();
 const navigate = useNavigate(router);
