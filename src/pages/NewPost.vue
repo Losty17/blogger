@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { onBeforeMount, reactive } from "vue";
-import { PostRenderer } from "../components";
+import { PostRenderer, UnderlineInput } from "../components";
 import { PostEditor } from "../components";
+import DefaultButton from "../components/buttons/DefaultButton.vue";
 import Post from "../types/post";
 
 const post = reactive<Post>({
@@ -25,19 +26,12 @@ onBeforeMount(() => {
 
 <template>
   <div class="post-editor-container">
-    <div class="flex items-center border-b border-teal-500 py-2">
-      <input
-        class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-        type="text"
-        placeholder="Post Title"
-      />
-      <button
-        class="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
-        type="button"
-      >
+    <UnderlineInput placeholder="Post Title">
+      <div>asdasd</div>
+      <DefaultButton>
         Publish
-      </button>
-    </div>
+      </DefaultButton>
+    </UnderlineInput>
     <div class="post-editor-content">
       <PostEditor :post="post" />
       <PostRenderer :post="post" id="post-preview" />
