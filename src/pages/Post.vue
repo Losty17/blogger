@@ -1,15 +1,10 @@
 <script setup lang="ts">
-import { marked } from "marked";
 import { onMounted, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { PostRenderer } from "../components";
+import { Post } from "../types";
 const route = useRoute();
-const post = reactive({
-  title: "",
-  content: "",
-  author: "",
-  date: "",
-});
+const post = reactive<Post>({} as Post);
 
 const widgets = [
   {
@@ -64,24 +59,13 @@ onMounted(() => {
     },
   })
     .then((res) => res.json())
-    .then((res) => {
-      post.content = marked(res.content);
-      post.title = res.title;
-      post.author = res.author;
-      post.date = res.date;
-    });
+    .then((res) => Object.assign(post, res));
 });
 </script>
 
 <template>
   <div class="content">
-    <PostRenderer
-      class="post-content"
-      :markdown="post.content"
-      :title="post.title"
-      :author="post.author"
-      :date="post.date"
-    />
+    <PostRenderer class="post-content" :post="post" />
     <div class="side-panel">
       <div v-for="widget of widgets" :key="widget.title" class="widget">
         {{ widget.title }}

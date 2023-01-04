@@ -8,17 +8,11 @@ const viewName = ref("default");
   <RouterView :name="viewName" v-slot="{ Component, route }">
     <!-- <Navbar class="navbar" /> -->
     <div class="navbar"></div>
-    <Suspense timeout="0">
-      <template #default>
-        <component
-          :is="Component"
-          :key="route.name === 'repeat' ? route.path : route.meta.key"
-          class="component"
-        />
-      </template>
-      <template #fallback> Loading... </template>
-    </Suspense>
-    <!-- </KeepAlive> -->
+    <component
+      :is="Component"
+      :key="route.name === 'repeat' ? route.path : route.meta.key"
+      class="component"
+    />
   </RouterView>
 </template>
 

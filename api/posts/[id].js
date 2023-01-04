@@ -42,6 +42,6 @@ export default function handler(request, response) {
     title: "Post Title " + id,
     content: text,
     author: "John Doe",
-    date: new Date().toString(),
+    updatedAt: new Date().toString(),
   });
 }

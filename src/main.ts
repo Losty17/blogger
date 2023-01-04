@@ -4,7 +4,6 @@ import "./unreset.scss";
 import "./prism.css";
 import App from "./App.vue";
 import { router } from "./router";
-import Prism from "prismjs";
 
 const app = createApp(App);
 

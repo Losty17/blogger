@@ -2,7 +2,7 @@ export default interface Post {
   id: number;
   title: string;
   content: string;
-  cover?: string;
+  author: string;
   tags?: string[];
   createdAt?: string;
   updatedAt?: string;

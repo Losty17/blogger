@@ -1,13 +1,26 @@
+<script setup lang="ts">
+import Prism from "prismjs";
+import Post from "../../types/post";
+import { onUpdated } from "vue";
+import { marked } from "marked";
+
+defineProps<{
+  post: Post;
+}>();
+
+onUpdated(() => Prism.highlightAll());
+</script>
+
 <template>
   <div class="unreset post">
-    <span class="post-info">
-      <h1>{{ title }}</h1>
+    <span class="post-info" v-if="post.title">
+      <h1>{{ post.title }}</h1>
       <p>
-        {{ author }}
+        {{ post.author }}
         <br />
         {{
-          date &&
-          new Date(date).toLocaleDateString("pt-BR", {
+          post.updatedAt &&
+          new Date(post.updatedAt).toLocaleDateString("pt-BR", {
             year: "numeric",
             month: "long",
             day: "numeric",
@@ -17,26 +30,10 @@
         }}
       </p>
     </span>
-    <hr />
-    <content v-html="markdown"></content>
+    <hr v-if="post.title" />
+    <content v-html="marked(post.content)"></content>
   </div>
 </template>
-
-<script setup lang="ts">
-import Prism from "prismjs";
-import { onUpdated } from "vue";
-
-defineProps<{
-  markdown: string;
-  title: string;
-  author: string;
-  date: string;
-}>();
-
-onUpdated(() => {
-  Prism.highlightAll();
-});
-</script>
 
 <style scoped lang="scss">
 .post-info {
