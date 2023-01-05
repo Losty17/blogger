@@ -28,7 +28,6 @@ const { type, placeholder, value, onChange } = defineProps<{
 }
 .underline-input {
   display: flex;
-  align-items: space-between;
   place-items: center;
   gap: 16px;
   width: 100%;
@@ -38,11 +37,11 @@ const { type, placeholder, value, onChange } = defineProps<{
   margin: 0 auto;
 }
 .underline-input > input {
-  width: 100%;
   height: 100%;
   border: none;
   outline: none;
   font-size: 1.2rem;
   font-weight: 500;
+  flex-grow: 1;
 }
 </style>

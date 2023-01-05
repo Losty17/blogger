@@ -13,7 +13,7 @@ const post = reactive<Post>({
 });
 
 onBeforeMount(() => {
-  fetch("/api/posts/1", {
+  fetch("/api/posts/69", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -26,10 +26,10 @@ onBeforeMount(() => {
 
 <template>
   <div class="post-editor-container">
-    <UnderlineInput placeholder="Post Title">
+    <UnderlineInput placeholder="Post Title" :value="post.title">
       <div>asdasd</div>
-      <DefaultButton>
-        Publish
+      <DefaultButton background-color="transparent" color="black" ripple-color="#f0f0f0" width="40px" height="40px" border-radius="100%" shadow="none">
+        <img src="../assets/up-arrow-and-cloud.svg" class="icon" />
       </DefaultButton>
     </UnderlineInput>
     <div class="post-editor-content">
@@ -63,5 +63,10 @@ onBeforeMount(() => {
 }
 #post-preview::-webkit-scrollbar {
   width: 0px;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  z-index: -1;
 }
 </style>
